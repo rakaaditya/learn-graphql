@@ -71,6 +71,6 @@ var schema = new graphql.GraphQLSchema({
 
 express()
   .use('/posts', graphqlHTTP({ schema: schema, pretty: true }))
-  .listen(3000)
-
-console.log('Runing...')
+  .listen(process.env.PORT || 3000, function(){
+    console.log("Running on port %d", this.address().port);
+  })
